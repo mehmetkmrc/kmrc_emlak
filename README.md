@@ -1,0 +1,1 @@
+# kmrc_emlak
