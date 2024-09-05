@@ -31,6 +31,11 @@ func main(){
             "Title": "Hakkımızda",
         })
     })
+    app.Get("/contacts", func (c *fiber.Ctx) error {
+        return c.Render("contacts", fiber.Map{
+            "Title": "İletişim",
+        })
+    })
 
     log.Fatal(app.Listen(":3000"))
 }
