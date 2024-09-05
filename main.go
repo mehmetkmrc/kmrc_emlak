@@ -26,6 +26,11 @@ func main(){
             "Title": "Kömürcü Emlak - Anasayfa",
         });
     })
+    app.Get("/about", func (c *fiber.Ctx) error {
+        return c.Render("about", fiber.Map{
+            "Title": "Hakkımızda",
+        })
+    })
 
     log.Fatal(app.Listen(":3000"))
 }
