@@ -36,6 +36,21 @@ func main(){
             "Title": "İletişim",
         })
     })
+    app.Get("/blogs", func (c *fiber.Ctx) error{
+        return c.Render("blogs", fiber.Map{
+            "Title": "Haberler",
+        })
+    })
+    app.Get("/blog-single", func (c *fiber.Ctx) error {
+        return c.Render("blog-single", fiber.Map{
+            "Title": "Tek Haberler",
+        })
+    })
+    app.Get("/projects", func (c *fiber.Ctx) error {
+        return c.Render("projects", fiber.Map{
+            "Title": "Projeler",
+        })
+    })
 
     log.Fatal(app.Listen(":3000"))
 }
