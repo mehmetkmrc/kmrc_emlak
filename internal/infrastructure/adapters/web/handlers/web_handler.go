@@ -1,49 +1,49 @@
 package handlers
 
 import (
-    "github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2"
 )
 
 func SetupRoutes(app *fiber.App) {
-    app.Get("/", homePage)
-    app.Get("/about", aboutPage)
-    app.Get("/contacts", contactsPage)
-    app.Get("/blogs", blogsPage)
-    app.Get("/blog-single", blogSinglePage)
-    app.Get("/projects", projectsPage)
+    app.Get("/", HomeHandler)
+    app.Get("/about", AboutHandler)
+    app.Get("/contacts", ContactsHandler)
+    app.Get("/blogs", BlogsHandler)
+    app.Get("/blog-single", BlogSingleHandler)
+    app.Get("/projects", ProjectsHandler)
 }
 
-func homePage(c *fiber.Ctx) error {
+func HomeHandler(c *fiber.Ctx) error {
     return c.Render("home", fiber.Map{
         "Title": "Kömürcü Emlak - Anasayfa",
     })
 }
 
-func aboutPage(c *fiber.Ctx) error {
+func AboutHandler(c *fiber.Ctx) error {
     return c.Render("about", fiber.Map{
         "Title": "Hakkımızda",
     })
 }
 
-func contactsPage(c *fiber.Ctx) error {
+func ContactsHandler(c *fiber.Ctx) error {
     return c.Render("contacts", fiber.Map{
         "Title": "İletişim",
     })
 }
 
-func blogsPage(c *fiber.Ctx) error {
+func BlogsHandler(c *fiber.Ctx) error {
     return c.Render("blogs", fiber.Map{
         "Title": "Haberler",
     })
 }
 
-func blogSinglePage(c *fiber.Ctx) error {
+func BlogSingleHandler(c *fiber.Ctx) error {
     return c.Render("blog-single", fiber.Map{
-        "Title": "Tek Haber",
+        "Title": "Tek Haberler",
     })
 }
 
-func projectsPage(c *fiber.Ctx) error {
+func ProjectsHandler(c *fiber.Ctx) error {
     return c.Render("projects", fiber.Map{
         "Title": "Projeler",
     })

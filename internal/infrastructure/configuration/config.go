@@ -1,7 +1,8 @@
 package configuration
 
 import (
-    "os"
+	
+	"os"
 )
 
 type Config struct {
@@ -9,12 +10,10 @@ type Config struct {
 }
 
 func LoadConfig() Config {
-    // Portu çevre değişkenlerinden al, varsayılan olarak ":3000" kullan
     port := os.Getenv("SERVER_PORT")
     if port == "" {
-        port = ":3000"
+        port = ":3000" // Varsayılan port
     }
-
     return Config{
         ServerPort: port,
     }

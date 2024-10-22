@@ -5,25 +5,17 @@
     /internal
         /domain
             /models
-                blog.go
-                project.go
             /services
-                blog_service.go
-                project_service.go
         /application
             /ports
-                blog_service_port.go
             /handlers
-                blog_handler.go
-                project_handler.go
         /infrastructure
             /adapters
                 /web
                     /handlers
-                        fiber_handler.go
+                        web_handler.go
+                    static_files.go
             /repositories
-                blog_repository.go
-                project_repository.go
             /configuration
                 config.go
     /client
@@ -33,3 +25,15 @@
             /images
             /js
         /templates
+
+----------------------------------
+
+/kmrc_emlak
+    /client
+        /public
+        /templates
+    /main.go
+
+
+
+
