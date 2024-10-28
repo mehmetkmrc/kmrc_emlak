@@ -11,6 +11,7 @@ func SetupRoutes(app *fiber.App) {
     app.Get("/blogs", BlogsHandler)
     app.Get("/blog-single", BlogSingleHandler)
     app.Get("/projects", ProjectsHandler)
+    app.Get("/listing-single", ListingSingleHandler)
 }
 
 func HomeHandler(c *fiber.Ctx) error {
@@ -46,5 +47,11 @@ func BlogSingleHandler(c *fiber.Ctx) error {
 func ProjectsHandler(c *fiber.Ctx) error {
     return c.Render("projects", fiber.Map{
         "Title": "Projeler",
+    })
+}
+
+func ListingSingleHandler(c *fiber.Ctx) error {
+    return c.Render("listing-single", fiber.Map{
+        "Title": "Daire",
     })
 }
