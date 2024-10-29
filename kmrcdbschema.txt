@@ -1,0 +1,148 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table users {
+  user_id varchar [primary key]
+  first_name varchar
+  last_name varchar
+  email varchar
+  password string
+  role varchar
+  created_at timestamp
+  updated_at timestamp
+  last_login timestamp
+}
+
+Table sessions{
+  session_id varchar
+  user_id varchar 
+  token varchar
+  ip_address varchar(45)
+  user_agent text
+  created_at timestamp
+  expires_at timestamp
+  last_access timestamp
+  is_active bool
+  location varchar
+}
+
+Table property{
+  user_id varchar
+  property_id varchar
+  tariff_plan varchar
+}
+
+Table basic_info{
+  basic_info_id varchar
+  main_title varchar
+  type varchar
+  category varchar
+  price int
+  keywords varchar
+  property_id varchar
+}
+
+Table location{
+  location_id varchar
+  phone varchar(13)
+  mail string
+  city string
+  address string
+  longitude decimal(9, 6)
+  latitude decimal(8, 6)
+  property_id varchar
+}
+
+Table nearby{
+  places varchar
+  distance int
+  property_id varchar
+}
+
+Table property_media{
+  type string
+  image bytea
+  background_image bytea
+  property_id varchar
+}
+
+Table property_details {
+  area decimal(10, 2)
+  bedrooms int 
+  bathrooms int
+  parking int
+  accomodation varchar
+  website string
+  property_details text
+  property_id varchar
+}
+
+Table amenities{
+  wifi bool
+  pool bool
+  security bool
+  laundry_room bool
+  equipped_kitchen bool
+  air_conditioning bool
+  parking bool
+  garage_atached bool
+  fireplace bool
+  window_covering bool
+  backyard bool
+  fitness_gym bool
+  elevator bool
+  property_id varchar
+}
+
+Table plans_brochures{
+  file_type varchar
+  file_path varchar
+  property_id varchar
+}
+
+Table accordion_widget{
+  accordion_exist bool
+  accordion_title string
+  accordion_details text
+  property_id varchar
+}
+
+Table video_widget{
+  video_exist bool
+  video_title string
+  youtube_url string
+  vimeo_url string
+  property_id varchar
+}
+
+
+
+
+
+
+
+
+
+Ref: "users"."user_id" < "sessions"."user_id"
+
+
+
+Ref: "property"."property_id" < "video_widget"."property_id"
+
+Ref: "property"."property_id" < "location"."property_id"
+
+Ref: "property"."property_id" < "amenities"."property_id"
+
+Ref: "property"."property_id" < "nearby"."property_id"
+
+Ref: "property"."property_id" < "plans_brochures"."property_id"
+
+Ref: "property"."property_id" < "basic_info"."property_id"
+
+Ref: "property"."property_id" < "accordion_widget"."property_id"
+
+Ref: "property"."property_id" < "property_media"."property_id"
+
+Ref: "property"."property_id" < "property_details"."property_id"
+
+Ref: "users"."user_id" < "property"."user_id"
