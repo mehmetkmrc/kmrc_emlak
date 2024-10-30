@@ -62,8 +62,8 @@ Table nearby{
 
 Table property_media{
   type string
-  image bytea
-  background_image bytea
+  image string
+  background_image string
   property_id guid
 }
 
