@@ -5,6 +5,17 @@
     /internal
         /domain
             /models
+                /accordion_widget.go
+                /amenities.go
+                /basic_info.go
+                /location.go
+                /nearby.go
+                /plans_brochures.go
+                /property_details.go
+                /property_media.go
+                /property.go
+                /user.go
+                /video_widget.go
             /services
         /application
             /ports
