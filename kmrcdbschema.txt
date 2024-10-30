@@ -2,10 +2,11 @@
 // Docs: https://dbml.dbdiagram.io/docs
 
 Table users {
-  user_id varchar [primary key]
+  user_id guid [primary key]
   first_name varchar
   last_name varchar
   email varchar
+  phone varchar
   password string
   role varchar
   created_at timestamp
@@ -14,8 +15,8 @@ Table users {
 }
 
 Table sessions{
-  session_id varchar
-  user_id varchar 
+  session_id guid
+  user_id guid 
   token varchar
   ip_address varchar(45)
   user_agent text
@@ -27,43 +28,43 @@ Table sessions{
 }
 
 Table property{
-  user_id varchar
-  property_id varchar
+  user_id guid
+  property_id guid
   tariff_plan varchar
 }
 
 Table basic_info{
-  basic_info_id varchar
+  basic_info_id guid
   main_title varchar
   type varchar
   category varchar
   price int
   keywords varchar
-  property_id varchar
+  property_id guid
 }
 
 Table location{
-  location_id varchar
+  location_id guid
   phone varchar(13)
   mail string
   city string
   address string
   longitude decimal(9, 6)
   latitude decimal(8, 6)
-  property_id varchar
+  property_id guid
 }
 
 Table nearby{
   places varchar
   distance int
-  property_id varchar
+  property_id guid
 }
 
 Table property_media{
   type string
   image bytea
   background_image bytea
-  property_id varchar
+  property_id guid
 }
 
 Table property_details {
@@ -74,7 +75,7 @@ Table property_details {
   accomodation varchar
   website string
   property_details text
-  property_id varchar
+  property_id guid
 }
 
 Table amenities{
@@ -91,20 +92,20 @@ Table amenities{
   backyard bool
   fitness_gym bool
   elevator bool
-  property_id varchar
+  property_id guid
 }
 
 Table plans_brochures{
   file_type varchar
   file_path varchar
-  property_id varchar
+  property_id guid
 }
 
 Table accordion_widget{
   accordion_exist bool
   accordion_title string
   accordion_details text
-  property_id varchar
+  property_id guid
 }
 
 Table video_widget{
@@ -112,7 +113,7 @@ Table video_widget{
   video_title string
   youtube_url string
   vimeo_url string
-  property_id varchar
+  property_id guid
 }
 
 
