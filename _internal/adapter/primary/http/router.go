@@ -13,6 +13,15 @@ func (s *server) SetupRouter() {
 
 func (s *server) webSetUp() {
 	s.app.Get("/", s.HomeWeb)
+	s.app.Get("/about", s.AboutWeb)
+	s.app.Get("/contacts", s.ContactsWeb)
+	s.app.Get("/blog-single", s.BlogSingleWeb)
+	s.app.Get("/blogs", s.BlogsWeb)
+	s.app.Get("/listing-single", s.ListingSingle)
+	s.app.Get("/listing", s.ListingWeb)
+	s.app.Get("/projects", s.ProjectWeb)
+
+	
 	// s.app.Get("/", func(c fiber.Ctx) error{
 	// 	return c.Redirect().To("/login")
 	// })
