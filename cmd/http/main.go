@@ -21,7 +21,7 @@ func main() {
     app := fiber.New(fiber.Config{
         Views: engine,
     })
-
+    
     // Static dosya ayarları
     web.SetupStaticFiles(app)
 

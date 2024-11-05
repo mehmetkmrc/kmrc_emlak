@@ -2,20 +2,21 @@ package http
 
 import (
 	"context"
-	"github.com/goccy/go-json"
 	"errors"
 	"fmt"
 	std_http "net/http"
 	"time"
 
+	"github.com/goccy/go-json"
+
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/static"
 	"github.com/gofiber/template/html/v2"
 	"github.com/mehmetkmrc/kmrc_emlak/_internal/adapter/secondary/config"
 	"github.com/mehmetkmrc/kmrc_emlak/_internal/core/port/auth"
 	"github.com/mehmetkmrc/kmrc_emlak/_internal/core/port/http"
 	"github.com/mehmetkmrc/kmrc_emlak/_internal/core/port/user"
 	"go.uber.org/zap"
-	
 )
 
 const (
@@ -85,8 +86,8 @@ func (s *server) Start(ctx context.Context) error{
 			})
 		},
 	})
-	
-	//app.Static("/", publicPath)
+	app.Use(static.New(publicPath))
+	//app.Static('/', publicPath)
 	s.app = app
 	fiberConnURL := fmt.Sprintf("%s:%d", s.cfg.HTTP.Host, s.cfg.HTTP.Port)
 

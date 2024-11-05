@@ -11,3 +11,12 @@ func (s *server) LoginWeb(c fiber.Ctx) error {
 	})
 }
 
+
+func (s *server) HomeWeb(c fiber.Ctx) error {
+	path := "home"
+	return c.Render(path, fiber.Map{
+		"Title": "Kömürcü Emlak - Anasayfa",
+	})
+}
+
+
