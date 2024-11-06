@@ -9,10 +9,11 @@ type (
 )
 
 type User struct {
-	ID        string    `json:"id"`
-	Name      string    `json:"name"`
-	Surname   string    `json:"surname"`
+	ID        string    `json:"userid"`
+	Name      string    `json:"first_name"`
+	Surname   string    `json:"last_name"`
 	Email     string    `json:"email"`
+	Phone 	  string 	`json:"phone"`
 	Password  string    `json:"password"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`

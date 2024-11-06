@@ -72,3 +72,21 @@ func (s *server) Login(c fiber.Ctx) error {
 
 	return s.successResponse(c, userResponse, "user logged in successfully", fiber.StatusOK)
 }
+
+func (s *server) Register(c fiber.Ctx) error {
+	reqBody := new(dto.UserRegisterRequest)
+	body := c.Body()
+	if err := json.Unmarshal(body, &reqBody); err != nil {
+		return s.errorResponse(c, "error while trying to parse body", err, nil, fiber.StatusBadRequest)
+	}
+
+	
+	newUser, err := s.userService.Register(c.Context(), reqBody.Name, reqBody.Surname, reqBody.Email, reqBody.Phone, reqBody.Password)
+	if err != nil {
+		return s.errorResponse(c, "Error while trying to register user", err, nil, fiber.StatusBadRequest)
+	}
+
+	userResponse := converter.GetUserModelToDto(newUser)
+
+	return s.successResponse(c, userResponse, "user registered succesfully", fiber.StatusCreated)
+}

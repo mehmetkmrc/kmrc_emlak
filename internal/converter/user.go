@@ -11,6 +11,7 @@ func GetUserModelToDto(userData *entity.User) *dto.GetUserResponse {
 		Name:      userData.Name,
 		Surname:   userData.Surname,
 		Email:     userData.Email,
+		Phone: 	   userData.Phone,
 		CreatedAt: userData.CreatedAt,
 	}
 }

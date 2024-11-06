@@ -35,4 +35,5 @@ func (s *server) webSetUp() {
 func (s *server) authSetUp() {
 	route := s.app.Group("/auth")
 	route.Post("/login", s.Login, s.RateLimiter(5, time.Minute), s.LoginValidation)
+	route.Post("/register", s.Register, s.RateLimiter(5, time.Minute), s.RegisterValidation)
 }

@@ -3,12 +3,14 @@ package service
 import (
 	"context"
 	"errors"
+	"strings"
+
+	"github.com/google/uuid"
 	"github.com/google/wire"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/domain/aggregate"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/domain/entity"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/port/auth"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/port/user"
-	"strings"
 )
 
 var (
@@ -61,4 +63,20 @@ func (us *UserService) GetUserByID(ctx context.Context, id string) (*entity.User
 	}
 
 	return userModel, nil
+}
+
+func (us *UserService) Register(ctx context.Context, first_name, last_name, email, phone, password string)(*entity.User, error) {
+	newUser := &entity.User{
+		ID: uuid.New().String(),
+		Name: first_name,
+		Surname: last_name,
+		Email: email,
+		Phone: phone,
+		Password: password,
+	}
+	err := us.userRepo.Create(ctx, newUser)
+	if err != nil {
+		return nil, err
+	}
+	return newUser, nil
 }

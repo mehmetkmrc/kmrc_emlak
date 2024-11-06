@@ -22,7 +22,16 @@ type (
 		Name        string    `json:"name"`
 		Surname     string    `json:"surname"`
 		Email       string    `json:"email"`
-		PhoneNumber string    `json:"phone_number"`
+		Phone 		string    `json:"phone"`
 		CreatedAt   time.Time `json:"created_at"`
+	}
+
+	UserRegisterRequest struct{
+		Name        string    `json:"name" validate:"required"`
+		Surname     string    `json:"surname" validate:"required"`
+		Email       string    `json:"email" validate:"required"`
+		Phone		string	  `json:"phone" validate:"required"`
+		Password 	string	  `json:"password" validate:"required"`
+		ConfirmPassword string `json:"confirm_password"`
 	}
 )

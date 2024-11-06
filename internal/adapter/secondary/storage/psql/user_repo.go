@@ -3,11 +3,13 @@ package psql
 import (
 	"context"
 	"database/sql"
+	"time"
 
 	"github.com/google/wire"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/domain/entity"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/port/db"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/port/user"
+	"golang.org/x/crypto/bcrypt"
 )
 
 var UserRepoSet = wire.NewSet(NewUserRepository)
@@ -34,16 +36,16 @@ func (r *UserRepository) GetByEmail(ctx context.Context, email string) (*entity.
 		CreatedAt sql.NullTime
 	}{}
 	query := `
-	SELECT CAST(SystemUserId AS VARCHAR(64)) as ID, 
-       FirstName, 
-       LastName, 
-       InternalEMailAddress, 
-       new_sifre, 
-       CreatedOn 
-	FROM SystemUserBase 
-	WHERE InternalEMailAddress = $1 
-  		AND new_sifre IS NOT NULL 
-  		AND InternalEMailAddress IS NOT NULL;
+	SELECT CAST(userid AS VARCHAR(64)) as ID, 
+       first_name, 
+       last_name, 
+       email, 
+       password, 
+       created_at 
+	FROM Users 
+	WHERE Email = $1 
+  		AND password IS NOT NULL 
+  		AND email IS NOT NULL;
 	`
 	err := r.db.QueryRowContext(ctx, query, email).Scan(&userQuery.ID, &userQuery.Name, &userQuery.Surname, &userQuery.Email, &userQuery.Password, &userQuery.CreatedAt)
 	if err != nil{
@@ -70,16 +72,16 @@ func (r *UserRepository) GetByID(ctx context.Context, id string) (*entity.User, 
 		Password  sql.NullString
 		CreatedAt sql.NullTime
 	}{}
-	query := `SELECT CAST(SystemUserId AS VARCHAR(64)) as ID, 
-       FirstName, 
-       LastName, 
-       InternalEMailAddress, 
-       new_sifre, 
-       CreatedOn 
-	FROM SystemUserBase 
-	WHERE SystemUserId = $1 
-  		AND new_sifre IS NOT NULL 
-  		AND InternalEMailAddress IS NOT NULL;
+	query := `SELECT CAST(userid AS VARCHAR(64)) as ID, 
+       first_name, 
+       last_name, 
+       email, 
+       password, 
+       created_at 
+	FROM Users 
+	WHERE userid = $1 
+  		AND password IS NOT NULL 
+  		AND email IS NOT NULL;
 	`
 	err := r.db.QueryRowContext(ctx, query, id).Scan(&userQuery.ID, &userQuery.Name, &userQuery.Surname, &userQuery.Email, &userQuery.Password, &userQuery.CreatedAt)
 	if err != nil {
@@ -99,13 +101,33 @@ func (r *UserRepository) GetByID(ctx context.Context, id string) (*entity.User, 
 
 func (r *UserRepository) GetUserPassword(ctx context.Context, email string) (string, error) {
 	var password string
-	query := `SELECT new_sifre 
-	FROM SystemUserBase 
-	WHERE InternalEmailAddress = $1;
+	query := `SELECT password 
+	FROM users 
+	WHERE email = $1;
 	`
 	err := r.db.QueryRowContext(ctx, query, email).Scan(&password)
 	if err != nil {
 		return "", err
 	}
 	return password, nil
+}
+
+func (r *UserRepository) Create(ctx context.Context, user *entity.User) error {
+	
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
+	if err != nil {
+        return err
+    }
+	user.CreatedAt = time.Now()
+	user.Password = string(hashedPassword)
+
+	query := `
+	INSERT INTO users (userid, first_name, last_name, email, phone, password, created_at)
+	VALUES ($1, $2, $3, $4, $5, $6, $7);
+	`
+	_, err = r.db.ExecContext(ctx, query, user.ID, user.Name, user.Surname, user.Email, user.Phone, user.Password, user.CreatedAt)
+	if err != nil {
+		return err
+	}
+	return nil
 }
