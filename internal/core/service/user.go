@@ -36,7 +36,7 @@ func (us *UserService) Login(ctx context.Context, email, password string) (*aggr
 		return nil, err
 	}
 	if strings.Compare(password, userPassword) != 0 {
-		return nil, errors.New("password not match")
+		return nil, errors.New("Şifreler eşleşmiyor")
 	}
 	userModel, err := us.userRepo.GetByEmail(ctx, email)
 	if err != nil {

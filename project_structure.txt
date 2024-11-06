@@ -1,34 +1,4 @@
 /kmrc_emlak
-    /cmd
-        /main
-            main.go
-    /internal
-        /domain
-            /models
-                /accordion_widget.go
-                /amenities.go
-                /basic_info.go
-                /location.go
-                /nearby.go
-                /plans_brochures.go
-                /property_details.go
-                /property_media.go
-                /property.go
-                /user.go
-                /video_widget.go
-            /services
-        /application
-            /ports
-            /handlers
-        /infrastructure
-            /adapters
-                /web
-                    /handlers
-                        web_handler.go
-                    static_files.go
-            /repositories
-            /configuration
-                config.go
     /client
         /public
             /css
@@ -36,6 +6,86 @@
             /images
             /js
         /templates
+    /cmd
+        /http
+            main.go
+            config.yml
+    /internal
+        /adapter
+            /primary
+                /http
+                    auth_middleware.go
+                    auth_validation.go
+                    http_middleware.go
+                    limit_middleware.go
+                    response.go
+                    router.go
+                    server.go
+                    token_middleware.go
+                    user_handler.go
+                    validation.go
+                    web_handler.go
+                /rabbit
+                    /consumer
+                        consumer.go
+                        interfaces.go
+                        options.go
+                    /publisher
+                        interfaces.go
+                        options.go
+                        publisher.go
+                    rabbitmq.go
+            /secondary
+                /app
+                    app.go
+                    wire_gen.go
+                    wire.go
+                /auth
+                    /paseto
+                        paseto.go
+                /config
+                    config.go
+                /logger
+                    logger.go
+                /storage
+                    /psql
+                        db.go
+                        user_repo.go
+        /converter
+            user.go
+        /core
+            /domain
+                /aggregate
+                    user_access.go
+                /entity
+                    user.go
+                /valueobject
+                    activity_log.go
+                    payload.go
+            /port
+                /auth
+                    token.go
+                /cache
+                    cache.go
+                /db
+                    db.go
+                /http
+                    http.go
+                /user
+                    user.go
+            /service 
+                user.go
+            /util
+                cache.go
+                data_manipulation.go
+                generic_list.go
+                graceful_shutdown.go
+                password.go
+                random.go
+                validation.go
+        /dto
+            user.go
+    
 
 ----------------------------------
 

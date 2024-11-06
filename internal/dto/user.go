@@ -22,7 +22,6 @@ type (
 		Name        string    `json:"name"`
 		Surname     string    `json:"surname"`
 		Email       string    `json:"email"`
-		Phone 		string    `json:"phone"`
 		CreatedAt   time.Time `json:"created_at"`
 	}
 
