@@ -1,6 +1,7 @@
 package http
 
 import (
+	
 	"time"
 
 	"github.com/gofiber/fiber/v3"
@@ -29,6 +30,7 @@ func (s *server) webSetUp() {
 		return c.SendString("Pong")
 	})
 	s.app.Get("/login", s.LoginWeb, s.RateLimiter(5, time.Minute))
+	//s.app.Get("/dashboard", s.DashboardWeb, s.authMiddleware)
 
 }
 
@@ -36,4 +38,5 @@ func (s *server) authSetUp() {
 	route := s.app.Group("/auth")
 	route.Post("/login", s.Login, s.RateLimiter(5, time.Minute), s.LoginValidation)
 	route.Post("/register", s.Register, s.RateLimiter(5, time.Minute), s.RegisterValidation)
+	route.Get("/dashboard",s.IsAuthorized ,s.DashboardWeb)
 }

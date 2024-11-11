@@ -64,3 +64,10 @@ func (s *server) ProjectWeb(c fiber.Ctx) error {
 		"Title": "Projeler",
 	})
 }
+
+func (s *server) DashboardWeb(c fiber.Ctx) error {
+	path := "dashboard"
+	return c.Render(path, fiber.Map{
+		"Title": "Dashboard",
+	})
+}

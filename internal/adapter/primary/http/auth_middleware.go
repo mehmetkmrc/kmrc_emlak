@@ -1,6 +1,8 @@
 package http
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v3"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/converter"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/core/domain/valueobject"
@@ -18,6 +20,8 @@ const (
 )
 
 func (s *server) IsAuthorized(c fiber.Ctx) error {
+
+	fmt.Println("IsAuthorized middleware çalıştı")
 	if !s.isValidToken(c) {
 		return s.redirectToLogin(c, fiber.StatusUnauthorized, "authorization header is not provided or invalid")
 	}
@@ -57,3 +61,5 @@ func (s *server) redirectToLogin(c fiber.Ctx, statusCode int, message string) er
 	})
 	return c.Redirect().To("/login")
 }
+
+

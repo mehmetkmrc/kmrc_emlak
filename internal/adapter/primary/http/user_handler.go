@@ -1,20 +1,25 @@
 package http
 
 import (
+	"fmt"
+	"time"
+
 	"github.com/goccy/go-json"
 	"github.com/mehmetkmrc/kmrc_emlak/internal/converter"
+
 	"github.com/mehmetkmrc/kmrc_emlak/internal/dto"
-	"time"
 
 	"github.com/gofiber/fiber/v3"
 )
 
 func (s *server) Login(c fiber.Ctx) error {
 	reqBody := new(dto.UserLoginRequest)
+	
 	body := c.Body()
 	if err := json.Unmarshal(body, &reqBody); err != nil {
 		return s.errorResponse(c, "error while trying to parse body", err, nil, fiber.StatusBadRequest)
 	}
+	
 
 	userData, err := s.userService.Login(c.Context(), reqBody.Email, reqBody.Password)
 	if err != nil {
@@ -23,6 +28,7 @@ func (s *server) Login(c fiber.Ctx) error {
 
 	userResponse := converter.GetUserModelToDto(userData.User)
 	bearerAccess := "Bearer " + userData.AccessToken
+	fmt.Println(userData.AccessToken)
 	c.Cookie(&fiber.Cookie{
 		Name:     "id",
 		Value:    userData.User.ID,
@@ -44,7 +50,6 @@ func (s *server) Login(c fiber.Ctx) error {
 		HTTPOnly: true,
 		Secure:   true,
 	})
-
 	c.Cookie(&fiber.Cookie{
 		Name:     AccessPublic,
 		Value:    userData.AccessPublic,
@@ -69,8 +74,9 @@ func (s *server) Login(c fiber.Ctx) error {
 		HTTPOnly: true,
 		Secure:   true,
 	})
+	
 
-	return s.successResponse(c, userResponse, "user logged in successfully", fiber.StatusOK)
+	return s.successResponse(c, userResponse, "Kullanıcı başarıyla giriş yaptı.", fiber.StatusOK)
 }
 
 func (s *server) Register(c fiber.Ctx) error {

@@ -33,4 +33,16 @@ type (
 		Password 	string	  `json:"password" validate:"required"`
 		ConfirmPassword string `json:"confirm_password"`
 	}
+
+	UserLoginResponse struct {
+		ID           string `json:"id"`
+		Name         string `json:"name"`
+		Surname      string `json:"surname"`
+		Email        string `json:"email"`
+		CreatedAt    string `json:"created_at"`
+		AccessToken  string `json:"access_token"`
+		AccessPublic string `json:"access_public"`
+		RefreshToken string `json:"refresh_token"`
+		RefreshPublic string `json:"refresh_public"`
+	}
 )
