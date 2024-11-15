@@ -6,11 +6,11 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Rentstate - Real Estate Agency Template</title>
         <!--=============== css  ===============-->	
-        <link type="text/css" rel="stylesheet" href="css/plugins.css">
-        <link type="text/css" rel="stylesheet" href="css/style.css">
-        <link type="text/css" rel="stylesheet" href="css/db-style.css">
+        <link type="text/css" rel="stylesheet" href="/css/plugins.css">
+        <link type="text/css" rel="stylesheet" href="/css/style.css">
+        <link type="text/css" rel="stylesheet" href="/css/db-style.css">
         <!--=============== favicons ===============-->
-        <link rel="shortcut icon" href="images/favicon.ico">
+        <link rel="shortcut icon" href="/images/kmrc-logo.jpg">
     </head>
     <body>
         <!--loader-->
@@ -40,7 +40,7 @@
                             <nav>
                                 <ul class="no-list-style">
                                     <li>
-                                        <a href="#" class="act-link">Home <i class="fa-solid fa-caret-down"></i></a>
+                                        <a href="/" class="act-link">Anasayfa <i class="fa-solid fa-caret-down"></i></a>
                                         <!--second level -->   
                                         <ul>
                                             <li><a href="index.html">Slider</a></li>
@@ -70,22 +70,23 @@
                                                 <!--third  level end-->
                                             </li>
                                         </ul>
+            
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                        <a href="blog.html">News</a>
+                                        <a href="/blogs">Haberler</a>
                                     </li>
                                     <li>
-                                        <a href="#">Pages <i class="fa-solid fa-caret-down"></i></a>
+                                        <a href="#">Sayfalar <i class="fa-solid fa-caret-down"></i></a>
                                         <!--second level -->   
                                         <ul>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contacts.html">Contacts</a></li>
-                                            <li><a href="agent-single.html">Agent single</a></li>
-                                            <li><a href="help.html">How it Works</a></li>
-                                            <li><a href="pricing.html">Pricing</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="add-listing.html">Add Listing</a></li>
+                                            <li><a href="/about">Hakkımızda</a></li>
+                                            <li><a href="/contacts">İletişim</a></li>
+                                            <li><a href="/agent-single">Tekli Ajans</a></li>
+                                            <li><a href="help.html">Nasıl Çalışır</a></li>
+                                            <li><a href="pricing.html">Fiyatlandırma</a></li>
+                                            <li><a href="/blog-single">Blog</a></li>
+                                            <li><a href="add-listing.html">Listeleme Ekle</a></li>
                                         </ul>
                                         <!--second level end-->                                
                                     </li>
@@ -153,7 +154,7 @@
                         <div class="header-user-menu">
                             <div class="header-user-name">
                                 <span>Hello , <strong> Alisa</strong></span>
-                                <img src="images/avatar/4.jpg" alt=""> 
+                                <img src="/images/avatar/4.jpg" alt=""> 
                             </div>
                             <div class="header-user-menu_wrap">
                                 <ul>
@@ -193,7 +194,7 @@
                                             <div class="user-dasboard-menu_wrap">
                                                 <div class="user-dasboard-menu-header">
                                                     <div class="user-dasboard-menu_header-avatar">
-                                                        <img src="images/avatar/4.jpg" alt=""> 
+                                                        <img src="/images/avatar/4.jpg" alt=""> 
                                                         <span>Welcome :  <strong> Alisa</strong></span>
                                                         <a href="dashboard-editprofile.html" class="usmha_edit tolt" data-microtip-position="left"  data-tooltip="Edit Profile"><i class="fa-light fa-user-pen"></i></a>
                                                         <div class="db-menu_modile_btn"><strong>Menu</strong><i class="fa-regular fa-bars"></i></div>
@@ -356,7 +357,7 @@
                                                     <div class="col-lg-4">
                                                         <div class="post-banner-widget">
                                                             <div class="bg-wrap fs-wrapper bg-parallax-wrap-gradien">
-                                                                <div class="bg  " data-bg="images/all/10.jpg"></div>
+                                                                <div class="bg  " data-bg="/images/all/10.jpg"></div>
                                                             </div>
                                                             <div class="post-banner-widget_content">
                                                                 <h5>Participate in our loyalty program. Refer a friend and get a discount.</h5>
@@ -384,146 +385,15 @@
                     <!-- container end-->
                 </div>
                 <!--content  end-->
+                {{template "partials/footer" .}}
                 <!--main-footer-->
-                <div class="height-emulator"></div>
-                <footer class="main-footer">
-                    <div class="container">
-                        <div class="footer-inner">
-                            <div class="row">
-                                <!-- footer-widget -->
-                                <div class="col-lg-4">
-                                    <div class="footer-widget">
-                                        <div class="footer-widget-title">Get Our Application</div>
-                                        <div class="footer-widget-content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eaque ipsa quae ab illo inventore veritatis et quasi architecto.</p>
-                                            <div class="api-links-wrap">
-                                                <a href="#" class="footer-widget-content-link"><span> On Apple Store</span><i class="fa-brands fa-apple"></i></a>
-                                                <a href="#" class="footer-widget-content-link"><span> On Google PLay</span><i class="fa-brands fa-google-play"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- footer-widget  end-->
-                                <!-- footer-widget -->
-                                <div class="col-lg-2">
-                                    <div class="footer-widget">
-                                        <div class="footer-widget-title">Helpful links</div>
-                                        <div class="footer-widget-content">
-                                            <div class="footer-list footer-box  ">
-                                                <ul>
-                                                    <li><a href="#">Our last News</a></li>
-                                                    <li><a href="#">Pricing Plans</a></li>
-                                                    <li><a href="#">Contacts</a></li>
-                                                    <li><a href="#">Help Center</a></li>
-                                                    <li><a href="#">Privacy Policy</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- footer-widget  end-->
-                                <!-- footer-widget -->
-                                <div class="col-lg-2">
-                                    <div class="footer-widget">
-                                        <div class="footer-widget-title">Our Contacts</div>
-                                        <div class="footer-widget-content">
-                                            <div class="footer-list footer-box  ">
-                                                <ul  class="footer-contacts  ">
-                                                    <li><span>Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
-                                                    <li> <span>Adress :</span><a href="#" target="_blank">USA 27TH Brooklyn NY</a></li>
-                                                    <li><span>Phone :</span><a href="#">+2(111)123456789</a></li>
-                                                </ul>
-                                                <a href="contacts.html" class="footer-widget-content-link"><span>Get in Touch</span><i class="fa-solid fa-caret-right"></i></a>	
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- footer-widget  end-->								
-                                <!-- footer-widget -->
-                                <div class="col-lg-4">
-                                    <div class="footer-widget">
-                                        <div class="footer-widget-title">Subscribe</div>
-                                        <div class="footer-widget-content">
-                                            <p>Want to be notified when we launch a new template or an udpate. Just sign up and we'll send you a notification by email.</p>
-                                            <form id="subscribe"   class="subscribe-item">
-                                                <input class="enteremail" name="email" id="subscribe-email" placeholder="Your Email" spellcheck="false" type="text">
-                                                <button type="submit" id="subscribe-button" class="subscribe-button"><span>Send</span> </button>
-                                                <label for="subscribe-email" class="subscribe-message"></label>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- footer-widget  end-->
-                            </div>
-                            <!-- footer-widget-wrap end-->					
-                        </div>
-                        <div class="footer-bottom">
-                            <a href="index.html" class="footer-home_link"><i class="fa-regular  fa-house"></i></a>		
-                            <div class="copyright"> <span>&#169;Renstate 2024</span> . All rights reserved. </div>
-                            <div class="footer-social">
-                                <span class="footer-social-title">Follow Us</span>
-                                <div class="footer-social-wrap">
-                                    <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a> 
-                                    <a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a> 
-                                    <a href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a> 
-                                    <a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-                                    <a href="#" target="_blank"><i class="fa-brands fa-youtube"></i></a>										 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                
+                
                 <!--main-footer end-->
             </div>
             <!--warpper end-->
             <!--wish-list-wrap-->
-            <div class="wish-list-wrap">
-                <div class="wish-list-close clwl_btn"><i class="fa-regular fa-xmark"></i></div>
-                <div class="wish-list_header">
-                    <div class="wish-list-title">Your Wishlist <span>3</span></div>
-                </div>
-                <div class="wish-list-container">
-                    <!--wish-list-item-->
-                    <div class="wish-list-item fl-wrap">
-                        <div class="wish-list-img"><a href="listing-single.html"><img src="images/all/thumbnails/1.jpg" alt=""></a>  
-                        </div>
-                        <div class="wish-list-descr">
-                            <h4><a href="listing-single.html">Urban House</a></h4>
-                            <div class="geodir-category-location fl-wrap"><a href="#"> 40 Journal Square  , NJ, USA</a></div>
-                            <div class="wish-list-price"> $ 320,000</div>
-                            <div class="clear-wishlist"><i class="fa-regular fa-trash-can"></i></div>
-                        </div>
-                    </div>
-                    <!--wish-list-item end-->
-                    <!--wish-list-item-->
-                    <div class="wish-list-item fl-wrap">
-                        <div class="wish-list-img"><a href="listing-single.html"><img src="images/all/thumbnails/2.jpg" alt=""></a>  
-                        </div>
-                        <div class="wish-list-descr">
-                            <h4><a href="listing-single.html">Luxury Family Home</a></h4>
-                            <div class="geodir-category-location fl-wrap"><a href="#">  40 Journal Square  , NJ, USA</a></div>
-                            <div class="wish-list-price">  $ 1500 - per month</div>
-                            <div class="clear-wishlist"><i class="fa-regular fa-trash-can"></i></div>
-                        </div>
-                    </div>
-                    <!--wish-list-item end-->
-                    <!--wish-list-item-->
-                    <div class="wish-list-item fl-wrap">
-                        <div class="wish-list-img"><a href="listing-single.html"><img src="images/all/thumbnails/3.jpg" alt=""></a>  
-                        </div>
-                        <div class="wish-list-descr">
-                            <h4><a href="listing-single.html">Modern Apartment</a></h4>
-                            <div class="geodir-category-location fl-wrap"><a href="#">  40 Journal Square  , NJ, USA</a></div>
-                            <div class="wish-list-price"> $ 1,600,000</div>
-                            <div class="clear-wishlist"><i class="fa-regular fa-trash-can"></i></div>
-                        </div>
-                    </div>
-                    <!--wish-list-item end-->					
-                </div>
-                <div class="wish-list-footer">
-                    <div class="clear_wishlist">  Clear Wishlist</div>
-                </div>
-            </div>
+            {{template "partials/wish_list" .}}
             <!--wish-list-wrap end-->
             <div class="mob-nav-overlay fs-wrapper"></div>
             <div class="body-overlay fs-wrapper wishlist-wrap-overlay clwl_btn"></div>
@@ -535,10 +405,10 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->   
-        <script  src="js/jquery.min.js"></script>
-        <script  src="js/plugins.js"></script>
-        <script  src="js/scripts.js"></script>
-        <script src="js/charts.js"></script>		
-        <script  src="js/db-scripts.js"></script>
+        <script  src="/js/jquery.min.js"></script>
+        <script  src="/js/plugins.js"></script>
+        <script  src="/js/scripts.js"></script>
+        <script src="/js/charts.js"></script>		
+        <script  src="/js/db-scripts.js"></script>
     </body>
 </html>
