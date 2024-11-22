@@ -2,6 +2,7 @@ package http
 
 import (
 	"github.com/gofiber/fiber/v3"
+	
 )
 
 func (s *server) LoginWeb(c fiber.Ctx) error {
@@ -66,6 +67,9 @@ func (s *server) ProjectWeb(c fiber.Ctx) error {
 }
 
 func (s *server) DashboardWeb(c fiber.Ctx) error {
+
+	//user_ID := c.Params("user_id")
+	
 	path := "dashboard"
 	return c.Render(path, fiber.Map{
 		"Title": "Dashboard",

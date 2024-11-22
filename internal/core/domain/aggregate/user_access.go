@@ -4,11 +4,11 @@ import "github.com/mehmetkmrc/kmrc_emlak/internal/core/domain/entity"
 
 type (
 	UserAccess struct {
-		User *entity.User
-		AccessToken string `json:"access_token"`
-		AccessPublic string `json:"access_public"`
-		RefreshToken string `json:"refresh_token"`
-		RefreshPublic string `json:"refresh_public"`
+		User 			*entity.User
+		AccessToken 	string 			`json:"access_token"`
+		AccessPublic 	string 			`json:"access_public"`
+		RefreshToken 	string 			`json:"refresh_token"`
+		RefreshPublic 	string 			`json:"refresh_public"`
 	}
 )
 

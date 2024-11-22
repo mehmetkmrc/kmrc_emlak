@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Başarılı giriş
                 console.log("Giriş başarılı:", data);
-                window.location.href = "/auth/dashboard"; // Yönlendirme yap
+                window.location.href = "/dashboard"; // Yönlendirme yap
             } else {
                 // Hata mesajını göster
                 const errorData = await response.json();

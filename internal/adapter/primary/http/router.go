@@ -10,6 +10,7 @@ import (
 func (s *server) SetupRouter() {
 	s.webSetUp()
 	s.authSetUp()
+	s.dashboardSetUp()
 }
 
 func (s *server) webSetUp() {
@@ -38,5 +39,9 @@ func (s *server) authSetUp() {
 	route := s.app.Group("/auth")
 	route.Post("/login", s.Login, s.RateLimiter(5, time.Minute), s.LoginValidation)
 	route.Post("/register", s.Register, s.RateLimiter(5, time.Minute), s.RegisterValidation)
-	route.Get("/dashboard",s.IsAuthorized ,s.DashboardWeb)
+}
+
+func (s *server) dashboardSetUp(){
+	route := s.app.Group("/dashboard", s.IsAuthorized, s.GetUserDetail, s.RateLimiter(120, time.Minute))
+	route.Get("", s.DashboardWeb)
 }
