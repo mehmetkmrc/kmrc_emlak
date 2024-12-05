@@ -59,7 +59,7 @@ func (s *server) redirectToLogin(c fiber.Ctx, statusCode int, message string) er
 	c.Status(statusCode).JSON(fiber.Map{
 		"error": message,
 	})
-	return c.Redirect().To("/login")
+	return c.Redirect().To("/")
 }
 
 

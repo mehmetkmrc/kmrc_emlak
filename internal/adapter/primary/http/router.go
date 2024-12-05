@@ -42,6 +42,6 @@ func (s *server) authSetUp() {
 }
 
 func (s *server) dashboardSetUp(){
-	route := s.app.Group("/dashboard", s.IsAuthorized, s.GetUserDetail, s.RateLimiter(120, time.Minute))
-	route.Get("", s.DashboardWeb)
+	route := s.app.Group("/dashboard")
+	route.Get("",s.DashboardWeb, s.IsAuthorized, s.GetUserDetail, s.RateLimiter(120, time.Minute), )
 }
