@@ -11,14 +11,14 @@ type (
 
 	// Responses
 	UserDetail struct {
-		ID      string `json:"id"`
+		UserID      string `json:"user_id"`
 		Email   string `json:"email"`
 		Name    string `json:"name"`
 		Surname string `json:"surname"`
 	}
 
 	GetUserResponse struct {
-		ID          string    `json:"id"`
+		UserID          string    `json:"user_id"`
 		Name        string    `json:"name"`
 		Surname     string    `json:"surname"`
 		Email       string    `json:"email"`
@@ -35,14 +35,14 @@ type (
 	}
 
 	UserLoginResponse struct {
-		ID           string `json:"id"`
-		Name         string `json:"name"`
-		Surname      string `json:"surname"`
-		Email        string `json:"email"`
-		CreatedAt    string `json:"created_at"`
-		AccessToken  string `json:"access_token"`
-		AccessPublic string `json:"access_public"`
-		RefreshToken string `json:"refresh_token"`
+		UserID       string  `json:"user_id"`
+		Name         string  `json:"name"`
+		Surname      string  `json:"surname"`
+		Email        string  `json:"email"`
+		CreatedAt    string  `json:"created_at"`
+		AccessToken  string  `json:"access_token"`
+		AccessPublic string  `json:"access_public"`
+		RefreshToken string  `json:"refresh_token"`
 		RefreshPublic string `json:"refresh_public"`
 	}
 )

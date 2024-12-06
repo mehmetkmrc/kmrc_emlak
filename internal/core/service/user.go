@@ -42,7 +42,7 @@ func (us *UserService) Login(ctx context.Context, email, password string) (*aggr
 	if err != nil {
 		return nil, err
 	}
-	accessToken, publicKey, accessPayload, err := us.token.CreateToken(userModel.ID)
+	accessToken, publicKey, accessPayload, err := us.token.CreateToken(userModel.UserID)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func (us *UserService) GetUserByID(ctx context.Context, id string) (*entity.User
 
 func (us *UserService) Register(ctx context.Context, first_name, last_name, email, phone, password string)(*entity.User, error) {
 	newUser := &entity.User{
-		ID: uuid.New().String(),
+		UserID: uuid.New().String(),
 		Name: first_name,
 		Surname: last_name,
 		Email: email,

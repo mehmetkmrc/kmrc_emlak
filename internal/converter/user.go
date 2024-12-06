@@ -7,7 +7,7 @@ import (
 
 func GetUserModelToDto(userData *entity.User) *dto.GetUserResponse {
 	return &dto.GetUserResponse{
-		ID:        userData.ID,
+		UserID:    userData.UserID,
 		Name:      userData.Name,
 		Surname:   userData.Surname,
 		Email:     userData.Email,

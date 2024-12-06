@@ -31,7 +31,7 @@ func (s *server) Login(c fiber.Ctx) error {
 	fmt.Println(userData.AccessToken)
 	c.Cookie(&fiber.Cookie{
 		Name:     "id",
-		Value:    userData.User.ID,
+		Value:    userData.User.UserID,
 		Expires:  time.Now().Add(3 * time.Hour),
 		HTTPOnly: true,
 		Secure:   true,

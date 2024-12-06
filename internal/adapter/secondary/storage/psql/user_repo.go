@@ -28,7 +28,7 @@ func NewUserRepository(db db.EngineMaker) user.UserRepositoryPort {
 
 func (r *UserRepository) GetByEmail(ctx context.Context, email string) (*entity.User, error){
 	userQuery := struct {
-		ID		  sql.NullString
+		UserID		  sql.NullString
 		Name	  sql.NullString
 		Surname   sql.NullString
 		Email	  sql.NullString
@@ -47,13 +47,13 @@ func (r *UserRepository) GetByEmail(ctx context.Context, email string) (*entity.
   		AND password IS NOT NULL 
   		AND email IS NOT NULL;
 	`
-	err := r.db.QueryRowContext(ctx, query, email).Scan(&userQuery.ID, &userQuery.Name, &userQuery.Surname, &userQuery.Email, &userQuery.Password, &userQuery.CreatedAt)
+	err := r.db.QueryRowContext(ctx, query, email).Scan(&userQuery.UserID, &userQuery.Name, &userQuery.Surname, &userQuery.Email, &userQuery.Password, &userQuery.CreatedAt)
 	if err != nil{
 		return nil, err
 	}
 
 	userData := &entity.User{
-		ID:        userQuery.ID.String,
+		UserID:    userQuery.UserID.String,
 		Name:      userQuery.Name.String,
 		Surname:   userQuery.Surname.String,
 		Email:     userQuery.Email.String,
@@ -65,14 +65,14 @@ func (r *UserRepository) GetByEmail(ctx context.Context, email string) (*entity.
 
 func (r *UserRepository) GetByID(ctx context.Context, id string) (*entity.User, error) {
 	userQuery := struct {
-		ID        sql.NullString
+		UserID        sql.NullString
 		Name      sql.NullString
 		Surname   sql.NullString
 		Email     sql.NullString
 		Password  sql.NullString
 		CreatedAt sql.NullTime
 	}{}
-	query := `SELECT CAST(user_id AS VARCHAR(64)) as ID, 
+	query := `SELECT CAST(user_id AS VARCHAR(64)) as UserID, 
        first_name, 
        last_name, 
        email, 
@@ -83,13 +83,13 @@ func (r *UserRepository) GetByID(ctx context.Context, id string) (*entity.User, 
   		AND password IS NOT NULL 
   		AND email IS NOT NULL;
 	`
-	err := r.db.QueryRowContext(ctx, query, id).Scan(&userQuery.ID, &userQuery.Name, &userQuery.Surname, &userQuery.Email, &userQuery.Password, &userQuery.CreatedAt)
+	err := r.db.QueryRowContext(ctx, query, id).Scan(&userQuery.UserID, &userQuery.Name, &userQuery.Surname, &userQuery.Email, &userQuery.Password, &userQuery.CreatedAt)
 	if err != nil {
 		return nil, err
 	}
 
 	userData := &entity.User{
-		ID:        userQuery.ID.String,
+		UserID:    userQuery.UserID.String,
 		Name:      userQuery.Name.String,
 		Surname:   userQuery.Surname.String,
 		Email:     userQuery.Email.String,
@@ -125,7 +125,7 @@ func (r *UserRepository) Create(ctx context.Context, user *entity.User) error {
 	INSERT INTO users (user_id, first_name, last_name, email, phone, password, created_at)
 	VALUES ($1, $2, $3, $4, $5, $6, $7);
 	`
-	_, err = r.db.ExecContext(ctx, query, user.ID, user.Name, user.Surname, user.Email, user.Phone, user.Password, user.CreatedAt)
+	_, err = r.db.ExecContext(ctx, query, user.UserID, user.Name, user.Surname, user.Email, user.Phone, user.Password, user.CreatedAt)
 	if err != nil {
 		return err
 	}
