@@ -36,7 +36,7 @@ func (r *UserRepository) GetByEmail(ctx context.Context, email string) (*entity.
 		CreatedAt sql.NullTime
 	}{}
 	query := `
-	SELECT CAST(userid AS VARCHAR(64)) as ID, 
+	SELECT CAST(user_id AS VARCHAR(64)) as ID, 
        first_name, 
        last_name, 
        email, 
@@ -72,14 +72,14 @@ func (r *UserRepository) GetByID(ctx context.Context, id string) (*entity.User, 
 		Password  sql.NullString
 		CreatedAt sql.NullTime
 	}{}
-	query := `SELECT CAST(userid AS VARCHAR(64)) as ID, 
+	query := `SELECT CAST(user_id AS VARCHAR(64)) as ID, 
        first_name, 
        last_name, 
        email, 
        password, 
        created_at 
 	FROM Users 
-	WHERE userid = $1 
+	WHERE user_id = $1 
   		AND password IS NOT NULL 
   		AND email IS NOT NULL;
 	`
@@ -122,7 +122,7 @@ func (r *UserRepository) Create(ctx context.Context, user *entity.User) error {
 	user.Password = string(hashedPassword)
 
 	query := `
-	INSERT INTO users (userid, first_name, last_name, email, phone, password, created_at)
+	INSERT INTO users (user_id, first_name, last_name, email, phone, password, created_at)
 	VALUES ($1, $2, $3, $4, $5, $6, $7);
 	`
 	_, err = r.db.ExecContext(ctx, query, user.ID, user.Name, user.Surname, user.Email, user.Phone, user.Password, user.CreatedAt)

@@ -9,7 +9,7 @@ type (
 )
 
 type User struct {
-	ID        string    `json:"userid"`
+	ID        string    `json:"user_id"`
 	Name      string    `json:"first_name"`
 	Surname   string    `json:"last_name"`
 	Email     string    `json:"email"`
